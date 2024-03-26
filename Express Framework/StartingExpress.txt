@@ -1,0 +1,26 @@
+const express = require('express');
+const app = express();
+
+const PORT = 4001;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+localhost:8000/monsters = hostname:portnumber/path
+GET requests are used for retrieving resources from a server, and we will discuss additional request types in later exercises.
+The HTTP verb is always included in the request, and it is one of a finite number of options used to specify expected functionality.
+
+<server address>:<port number>/api-endpoint = express tries to match /api-endpoint
+The res object has a .status() method to allow us to set the status code, and other methods like .send() can be chained from it.
+status codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+Example:
+    const monsterStoreInventory = { fenrirs: 4, banshees: 1, jerseyDevils: 4, krakens: 3 };
+    app.get('/monsters-inventory/:name', (req, res, next) => {
+    const monsterInventory = monsterStoreInventory[req.params.name];
+    if (monsterInventory) {
+        res.send(monsterInventory);
+    } else {
+        res.status(404).send('Monster not found');
+    }
+    });
+Query strings appear at the end of the path in URLs, and they are indicated with a ? character. For instance, in /monsters/1?name=chimera&age=1, the query string is name=chimera&age=1 and the path is /monsters/1/

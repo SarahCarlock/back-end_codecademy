@@ -1,0 +1,16 @@
+If this code has been run in Node on your computer, why will a GET request to localhost:4001/ fail? The server is listening on port 8000, not 4001
+What will req.query look like in a route that matches a GET request to /animals?color=green&age=4&eyes=2? {color: 'green', age: '4', eyes: '2'}
+Which Express server method is used to update a resource? app.put()
+Which code will set a status code of 200 and send an empty response? res.status(200).send();
+Which Express method should be used for routes that will create a new resource? app.post()
+Which Express method will start a server? app.listen()
+Which express method sends a response to the client? res.send()
+Which Express method should be used for routes that will remove a resource? app.delete()
+Which Express method should be used for routes that will retrieve a resource? app.get()
+
+What will this Express server log in response to GET /fruits? request to /fruits, looking good!
+In the code snippet below, what value should the slothPath string have in order for the route to match a GET /animals/sloths request? '/sloths'
+Which route will GET /dogs/retriever/1 match? app.get('/dogs/:breed/:id', (req, res, next) => {});
+What will req.params equal in this route with a GET request to /users/user_1/purchases/100? {name: 'user_1', purchaseId: '100' }
+Which code will create an Express server instance and save it to the variable app? const express = require('express'); const app = express()
+
