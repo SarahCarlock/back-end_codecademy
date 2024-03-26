@@ -1,0 +1,31 @@
+Swagger UI is used to visualize the API specification in an easy-to-read way
+
+What is Swagger NOT used for? 
+    Generate complete code following API specifications
+
+Swagger Codegen is used to generate code stubs which can be filled in with more logic to match the API specification.
+
+What is Swagger?
+    A set of tools for designing, building, and visualizing APIs.
+
+What specification do the Swagger tools use?
+    OpenAPI
+
+True or False: The Swagger Editor, Swagger CodeGen, and Swagger UI must be downloaded to use those tools.
+    (Selected)Correct:
+    False
+
+    👏
+    Good Job! You got it right! These tools can be used without downloading by going straight to Swagger’s online editor.
+
+True or False: Swagger CodeGen automatically generates documentation in the code if descriptions are provided in the API specification.
+    True- Documentation is automatically generated in the code if descriptions are provided in the specification.
+
+Which is NOT a likely use case for Swagger UI?
+    HAviung developers generate code based on the specification to save time.
+
+What is Swagger Editor?
+    a tool used to design APIs.
+
+True or False: The Swagger Editor can use the YAML language when designing an API.
+    True

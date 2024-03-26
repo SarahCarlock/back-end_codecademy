@@ -1,0 +1,165 @@
+Introduction to YAML
+An overview of YAML, its basic syntax, and use cases.
+
+Introduction
+YAML is a standard format for storing data. It originally stood for Yet Another Markup Language but now stands for YAML Ain’t Markup Language. Because of its emphasis on human readability, YAML is increasingly relied upon for configuration files. It can also be used for log files, debugging complex data structures, interprocess messaging, and cross-language data sharing.
+
+YAML is often compared to JSON due to their similarities. Both formats are human-readable and can represent complex data structures. However, there are some key differences. YAML is generally considered more human-readable due to its use of whitespace for separating objects rather than curly braces or brackets. It also offers additional features such as comments and object references. JSON, however, is superior when it comes to performance, specifically the speed at which a computer can parse it.
+
+Let’s review the fundamentals:
+
+Free response
+In your own words, describe what YAML is as well as some of its use cases.
+
+Your response
+
+YAML was originally considered a markup language, but has more abilities that include better human-readability, have complex data structures, and configuration.
+
+Our answer
+YAML is a standard format for storing data. It stands for “YAML ain’t markup language”, but it used to stand for “Yet Another Markup Language”. It was created to emphasize human-readability while still being easily ported to other languages. The most common use case for YAML is in configuration files, however it is also used for log files, interprocess messaging, and debugging complex data structures, to name a few.
+
+YAML Structure
+To begin exploring YAML, let’s take a look at an example YAML file called example.yaml:
+
+---
+# Our first YAML document
+bottle: wine
+capitals:
+  Japan: Tokyo
+  Argentina: Buenos Aires
+oceans:
+  - Indian
+  - Atlantic
+  - Arctic
+  - Pacific
+…
+
+Note the following about the contents of this file:
+
+A YAML document begins with three dashes (---) and ends with three dots (…). These characters can separate multiple YAML documents within a single file. In a YAML file with a singular document (e.g., the above example), most parsers treat these characters as optional.
+
+The second line begins with #, which makes it a comment. Comments are ignored by parsers but are helpful since YAML files are often shared by different developers and can provide insight into the document’s purpose.
+
+The bulk of this YAML document consists of mappings or key-value pairs, which are separated by a colon and a space (: ). Every key must be a string and must be unique. Values can be nested mappings, as is the case with the value of capitals. They can also be sequences, as with the value of oceans, or scalars, as with the value of bottle. We’ll learn more about these data types a bit later in this article.
+
+The use of whitespace is a crucial aspect of YAML. Notice how a line break separates each mapping. When objects are nested, indentation indicates which objects are a part of the same value. Indentation must consist of one or more spaces. Tabs, however, are forbidden in YAML.
+
+While not explicitly shown, note that YAML files should end with the extension .yaml or .yml.
+
+Let’s try writing some YAML:
+Coding question
+Create a YAML document with two mappings. The first mapping should map the key human to the value trainer. The second mapping should map the key animals to a value that contains two nested mappings:
+
+the first which maps the key elephant to the value circus
+the second which maps the key horse to the value rodeo
+Remember to end each mapping with a line break and indent your nested mappings by the same number of spaces!
+
+123456
+# create your mappings below
+human: trainer
+animals:
+ elephant: circus
+ horse: rodeo
+...
+Run
+
+
+👏
+You got it!
+
+Sequences
+YAML sequences look a bit like lists or arrays in programming languages. They can contain any mix of data types, including nested sequences or mappings. Sequences are usually displayed on multiple lines, where each element begins with a dash, followed by a space, and ends with a line break. Take a look at an example:
+
+fish:
+  - Tuna
+  - Trout
+  - Salmon
+numbers:
+  - pi
+  - 7
+  - 1.1
+
+Sequences can also be written on a single line surrounded by brackets. In this case, elements are separated by a comma and a space, like this:
+
+planets: [Mercury, Venus, Mars]
+
+Let’s recap sequences:
+Multiple choice
+Which of the following is NOT an acceptable sequence in a YAML document?
+
+
+[water]
+
+
+- water
+- wine
+- soda
+
+(Selected)Correct:
+water
+wine
+soda
+
+
+[water, wine, soda]
+
+👏
+That’s right! The elements in this multi-line sequence do not start with a dash and a space!Show less
+
+Scalars
+All remaining data types in YAML are scalars, also known as single value data types. These include integers, floating-point numbers, booleans, null, and strings. Let’s see scalars in action:
+
+scalars:
+  - 1
+  - 1.0
+  - True
+  - null
+  - "string"
+
+Let’s break down the types above:
+
+Numbers: In YAML, numbers are classified by a single rule. Any number that doesn’t have a decimal point is an integer, while numbers that do are floats.
+
+Booleans: For booleans, the keywords True, On, and Yes evaluate to true. The keywords False, Off, and No will to false. Here are some examples:
+
+elephant:
+  - big: True
+  - mammal: Yes
+  - yellow: Off
+
+Null: A null value can be represented by either ~ or null (could also be written as Null or NULL), like this:
+nulls:
+  - null
+  - ~
+
+Strings: In YAML, strings generally do not need quotes. Two notable exceptions are as follows:
+Use single or double quotes to create a value that would normally be interpreted as a different data type to be a string, i.e., “10” or "null"
+Use double quotes to allow specific sequences to be escaped instead of treated as literals, such as "\n" representing a line break
+Here are some more examples of strings in action:
+
+strings:
+  - This string ends with a slash followed by n \n
+  - "This string ends with a line break \n"
+  - 'True'
+
+Let’s recap scalars:
+Fill in the blank
+Match the values below with their corresponding scalar data types.
+
+scalars:
+  float: 99.9
+  string:'0'
+  null: ~
+  boolean: Yes
+  integer: 0
+
+👏
+You got it!
+
+Wrap Up
+The information learned here will cover the vast majority of features to get started with YAML! To summarize, we learned:
+
+What YAML is, what it is used for, and how it compares to JSON
+The basic structure of a YAML document, including comments and whitespace
+The data types of YAML (mappings, sequences, and scalars)
+To learn more about some more advanced YAML features, check out the official YAML homepage - which, by the way, is a valid YAML document!
