@@ -1,0 +1,24 @@
+NoSQL: short for “not-only SQL”, but is also commonly called “non-relational” or “non-SQL”. 
+    Any database technology that stores data differently from relational databases can be categorized as a NoSQL database. 
+    While not an exhaustive list, here are some notable benefits that a NoSQL database may provide:
+        Scalability: NoSQL was designed with scalability as a priority. NoSQL can be an excellent choice for massive datasets that need to be distributed across multiple servers and locations.
+        Flexibility: Unlike a relational database, NoSQL databases don’t require a schema. This means that NoSQL can handle unstructured or semi-structured data in different formats.
+        Developer Experience: NoSQL requires less organization and thus lets developers focus more on using the data than on figuring out how to store it.
+
+    While these are important benefits, NoSQL databases do have some drawbacks:
+        Data Integrity: Relational databases are typically ACID compliant, ensuring high data integrity. NoSQL databases follow BASE principles (basic availability, soft state, and eventual consistency) 
+        and can often sacrifice integrity for increased data distribution and availability. However, some NoSQL databases do offer ACID compliance.
+        Language Standardization: While some NoSQL databases do use the Structured Query Language (SQL), typically, each database uses its unique language to set up, manage, and query data.
+
+Key-Value:
+    database consists of individual records organized via key-value pairs. In this model, keys and values can be any type of data, ranging from numbers to complex objects. However, keys must be unique.
+Document-based:
+    A document-based (also called document-oriented) database consists of data stored in hierarchical structures. Some supported document formats include JSON, BSON, XML, and YAML. 
+    The document-based model is considered an extension of the key-value database and provides querying capabilities not solely based on unique keys. 
+    Documents are considered very flexible and can evolve to fit an application’s needs. They can even model relationships!
+Graph-Based:
+    A graph database stores data using a graph structure. In a graph structure, data is stored in individual nodes (also called vertices) and establishes relationships via edges (also called links or lines). 
+    The advantage of the relationships built using a graph database as opposed to a relational database is that they are much simpler to set up, manage, and query. 
+Column Oriented:
+    A column-oriented NoSQL database stores data similar to a relational database. However, instead of storing data as rows, it is stored as columns. 
+    Column-oriented databases aim to provide faster read speeds by being able to quickly aggregate data for a specific column. 

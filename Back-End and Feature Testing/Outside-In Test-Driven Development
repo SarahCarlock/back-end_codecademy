@@ -1,0 +1,6 @@
+Outside-in test-driven development doesn’t answer these questions, but provides you with an approach to finding an answer. 
+    It helps you avoid the decision paralysis that often slows development teams, leads to extended deadlines, and incomplete implementation.
+    In addition to the efficiencies discussed above, the outside-in approach is a satisfying way to develop a web application with a full test suite.
+Test-driven development (TDD): the process of writing tests before implementation code.
+    Red, Green, Refactor Cycle: common approach.
+Oustide-in TD: developers use to bui;d full-stack web apps. Uses Reg, Green, Refactor Cycle, but a failing test does not always inform you to write new implementation code.

@@ -1,0 +1,94 @@
+Which of the following is an example of Multi-factor authentication? Username and password and then receive a text message with a passcode.
+Authorization is the cerification of what you are allowed to do.
+Encryption is the process of transforming data into a format that is unreadable unless you have the correct key to decrypt it.
+REsponses to authentication prompts can be categorized into: Knowledge-Based: "Something You Know", Possession-Based: "Something You Have", Inherence-Based: "Something You Are"
+Early password systems stored passwords in plaintext. Now more complex with the advance of crypotography, and the current standard for password storage is to use salted hashes.
+What did early computers use passwords for? Authenticating users on time-sharing computer systems.
+OTP= One-time password: passwords that expire and refresh.
+MFA= Multi-factor authentication: possession-based authentication is now widely used to supplement knowledge-based authentication.
+PKI = Public-Key Infrastructure: system that designates trusted authorities who verify that you're interacting with who you think you are.
+SSO = Single Sign-On: ‘Sign in with Google/Facebook/Etc’ buttons. The current standard for SSO in OAuth 2.0. 
+    Which of the following statements about OAuth 2.0 is NOT true? OAuth 2.0 shows you password to third-party websites.
+OWASP even lists “Broken Authentication” as one of its “Top Ten” critical security risks facing web applications. https://owasp.org/www-project-top-ten/
+
+OAuth 2.0 does NOT allow third-party websites to see your password. true
+Hashing on its own is a secure method for password storage. False
+OAuth 3.0 is the current standard for SSO. false
+What is NOT a factor used in multi-factor authentication? Something You Want (true: have, know, and are).
+Authorization is about verifying and maintaining access. true
+Usernames and passwords are usually considered a single step of authentication. true
+“Encryption is the process of…” transforming data into a format that is unreadable without the correct secret.
+Single-factor authentication relies on only one factor of authentication. true
+Which of the following is NOT a factor of authentication? Permission, Something you allow
+Which of the following is NOT an example of authorization? Verifying the identity of a user.
+Encryption is a solved problem, and it does NOT need to be further developed. false
+Authentication is about verifying identity. true
+What factor of authentication do user-created passwords usually belong to? Knowledge, Something You Know
+Which of the following is an example of multi-factor authentication? Authentication using a password and a one-time password.
+Complete this sentence: “In the 1970s, password storage was strengthened by storing them…” using hashing algorithms with salts.
+Which of the following are all factors of MFA? Possession, Knowledge, and Inherence.
+Authentication that requires at least two steps is always multi-factor authentication. false
+Which of the following is an example of single-factor authentication? Authenticating using a password and a one-time password.
+One-Time Passwords are typically used for knowledge-based authentication. false 
+What is a one-time password? a password that automatically changes on a regular basis.
+
+Web session: series of user interactions over a time frame. Session data is stored server-side and associated with a session ID.
+Cookies: tiny pieces of data --text files of max 4kb -- the browser stores that are automatically sent with HTTP requests to a web application. Set by the HTTP response header in key-value pairs.
+    Set-Cookie: Key=Value
+Add expiration date or duration: Set-Cookie: Key=Value; expires=Saturday, 01-May-2021 07:30:10 GMT
+Set-Cookie attributes: HttpOnly, SameSite, Secure, more=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+localStorage: a newer form of client-side storage. These browser files also store data as key-value pairs, and web applications can choose to store up to 5MB of data in localStorage. 
+    localStorage does not interact with the server, but is instead accessed and modified by simple client-side JavaScript code. 
+    localStorage will persist even after a user exits the browser, and will continue to persist until the browser cache is deleted.
+    localStorage.setItem('key', 'value');
+sessionStorage: uses the same syntax as localStorage, can hold session data. This storage clears once the browser closes, so, for many use cases, this is more secure.
+ According to OWASP, session identifiers should be at least 128 bits long. This helps prevent brute-force attacks where a hacker uses multiple bots to guess IDs.
+
+There are three main types of API authentication: 
+    HTTP Basic Auth
+        Requires your username and password everytime and cookies store your credentials.
+    API keys
+        uses tokens. Long unique string of leters and numbers for each user.
+    OAuth
+        Sign in using Google, LinkedIn, etc... can use MultiFactorAuth, MFA.
+
+When you use OAuth to create an account on a third-party website by utilizing your Gmail credentials, that third-party website stores your Gmail credentials. false
+OAuth 2.0 grant types, also known as flows, describe multiple ways to obtain access tokens. Flows involve two main parts:
+    Redirecting the user to the OAuth provider and obtaining an access token
+    Using the access token to gain restricted access
+Client Credentials Grant- A Client Credentials Grant is used when applications request an application token to access their own resource. This grant type has a limited use case 
+    because it’s only used when the resource server and the authentication server are the same entity.
+Authorization Code Grant- The Authorization Code Grant is the most widely used grant for publicly available applications. This was the grant type we showed earlier in this article. 
+    To use this grant type, the webserver must have the capability to store client credentials securely.This approach uses browser redirection to communicate between the resource server 
+    and the authorization server. The client will obtain an authorization code and then exchange it for an access token.
+Proof Key for Code Exchange (PKCE)- PKCE is an extension to the Authorization Code flow, and it is used to prevent attacks and to securely perform the OAuth exchange from public clients. 
+    This extension helps prevent authorization code injection from malicious actors.
+Implicit Grant - Deprecated- similar to the authorization code grant except in the case of single-page applications that cannot store client credentials. 
+    In this case, the authorization server will return an access token directly. The Implicit flow is deprecated, but might still be seen in legacy code. 
+    It has been replaced by the PKCE extension.
+Device Code Grant- This grant is used when an application exchanges the user’s username and password for an access token. 
+    It’s important to note that third-party applications should never be allowed to ask the user for their password! The Resource Owner Password Credential flow would only be 
+    used if you had a high trust relationship with the client application. The Resource Owner Password Credential flow is deprecated, but might still be seen in legacy code.
+
+OAuth 1.0 vs OAuth 2.0- OAuth 2.0 more common, The main argument against OAuth 1.0 is that it is difficult to implement for software developers; 
+    it is more complex than OAuth2 and disrupts the user experience on mobile applications by requiring a user to open their browser. The complexity of OAuth1 is partially due to additional layers of security, 
+    like cryptography, built-in, and OAuth2 trades these additional cryptography protections for easier implementation and a better user experience, since HTTPS protocol already provides encryption.
+    Large authenticators, such as Google, no longer support OAuth1; however, it is still used, most notably by Twitter.
+All methods of authorization have advantages and vulnerabilities and OAuth is no exception; however, it remains a generally secure and convenient way to authenticate yourself on trusted applications.
+
+Two types of clients: 
+    Public clients are NOT able to store credentials securely and can only use grant types that do not use their client secret.
+        A Client ID: a public identifier for apps that is unique across all clients and the authorization server.
+        A Client Secret: a secret key known only to the application and the authorization server.
+
+    Confidential clients are applications that can be registered to an authorization server using credentials. Those credentials, 
+        a client ID and a client secret, can be secured without exposing them to a third party. They require a backend server to store the credentials. A client’s ability to securely store credentials determines which type of OAuth authorization flows should be used.
+
+Which method of the OAuth2Server object returnsa Promise that resolves to the access token object? authenticate() method
+Which of the following is true? a public identifier for apps that is unique across all clients and the authorization server.
+Which of the following statements is true about the oauth2-server package? The oauth2-server module is an open-source package for implementing an OAuth in Node.JavaScript
+Which of the following is true about public clients in OAuth? Public clients are not able to store credentials securely.
+Which of the following is NOT a role described in OAuth? Authorization Owner
+Which of the following is NOT true about access tokens? Access tokens are one-time use.
+Which of the following is NOT true about functions that should be implemented for a Client Credentials grant type in an OAuth2Server instance? The getClientSecret() function is used to store the Client Secret.
+Which of the following is true about OAuth? OAuth 2.0 is the industry standard for authorization where an application is greanted access to a third party website without the need to share credentials.

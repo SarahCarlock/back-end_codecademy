@@ -1,0 +1,35 @@
+The goal of this unit was to learn how to implement user authentication and authorization in an express application. Authentication and authorization are key pieces to securing any web application that works with user data. In fact, they’re so important that Broken Authentication and Broken Access Control make up two of the OWASP Top Ten’s most critical security risks to web applications. Verifying who your users are and what they’re allowed to do will help create a safe and secure user experience.
+
+Having completed this unit, you are now able to:
+
+Define Authentication, Authorization, and Encryption
+Explain the purpose of user sessions
+Implement Sessions in Express using express-session
+Allow users to log into an Express app using passport-local
+Secure user passwords with hashing and salts using bcrypt.js
+Add OAuth 2.0 as a login option to an Express app using oauth2-server
+
+Feature Tests
+When developing a new feature and practicing outside-in development, feature tests are where we’ll typically start.
+Feature tests often incorporate every layer of the application and — using WebDriverI/O and Mocha — exercise features in the same way that a human user would. They’re a good tool for reproducing end-user behavior.
+WebDriverI/O is a Node package that interacts with a “headless” instance of PhantomJS.
+Feedback from feature tests is usually in terms of HTML (i.e. that text or button that you said would be on the page isn’t on the page).
+Because feature tests typically hit every layer of a developer’s stack, they are slower than tests at lower layers, and errors thrown in feature tests can be difficult to interpret and provide little guidance on what the developer can do to resolve them.
+Their value, however, is in developer confidence that the software functions as expected.
+
+Assuming you are running a test suite that is using a headless browser, which command would correctly set the URL of the test browser to load the page https://www.codecademy.com? 
+    browser.url('https://www.codecademy.com);
+Which of these describes te purpose of using the .setValue() method when writing feature tests? To mimic the user entering text into the corresponding HTML input elements.
+When using Outside-in TDD, which of the following is a reason to drop a layer in your web application? Your tests are fialing and you cannot address the errors by writng more code at the current level.
+Which of the following describes a starting point for test-driving the development of a new feature? Write a nested describe() block which specifies the context of the app and the feature we want to create a test for.
+Following Outside-in testing, which of these statements about feature tests is true? Feature tests invlove the aspects of your project that users will see and interact with.
+Which block of code would address the following error message and allow the test that produced it to pass or progress to the next issue?
+    An element could not be located on the page using the given search parameters.
+    running chrome
+    Error: An element could not be located on the page using the given search parameters.
+        at element("input[type=submit]") - click.js:12:17
+        at click("input[type=submit]") - at Context.it               -----> <input type="submit">
+Assume a const variable named eachOther is set equal to a string in your test code. Assume an HTML input element id="love" exists in your index.html file. 
+    Which block of code would successfully set the value of that HTML input to the variable named eachOther?
+        browser.setValue('input[id=love'], eachOther);
+Feature tests for a web application may make assertions about? HTML
