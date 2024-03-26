@@ -1,0 +1,48 @@
+JavaScript Object Notation: JSON Web Tokens are self-contained JSON objects that compactly and securely transmit information between two parties. They are secure because they are digitally signed using a secret or a public/private key pair.
+    Made up of 3 components: 
+        Header:
+            Type: The type of this token will always be “JWT”. The Internet Assigned Numbers Authority, or IANA, coordinates internet protocol resources across the globe. The “JWT” type aligns with the media type “application/jwt“.
+            Algorithm: The signing, or hashing, algorithm used might vary. Some commonly used algorithms are HMAC-SHA256, represented by "HS256", RSA with SHA-256, represented by "RW256", and ECDSA with SHA-256, represented by "ES256".
+            Here’s an example of a header specifying the HMAC-SHA256 algorithm:
+            {
+            'alg': 'HS256',  
+            'typ': 'JWT'
+            }
+        Payload: contains claims about an entity, a statement or piece of imfo and the entity is often the user.
+            Registered Claims: These are predefined claim types that anyone can use in a JWT.
+            Public Claims: These are custom claim types that are created by a developer and can be used publicly. They should be registered to avoid collisions, also known as repeated claims.
+            Private Claims: These are custom claim types that are not registered or public. They are only used between parties that have agreed to use them.
+            Here’s an example payload using some common registered claims:
+            {
+            'sub': '1234567890',
+            'name': 'Harine Cooper',
+            'admin': false,
+            'iat': 1620924478,
+            'exp': 1620939187
+            }
+        Signature: used to verify that the JWT signature wasn't tampered with or changed. It can be created taking the encoded header, the encoded payload, a secret, and using the hashing algorithm to create a hash from those elements.
+        secret- symmetric key know by the sender and receiver of this token.
+    Do not store you JWT in localStorage as an attacker could use Cross-Site Scripting attacks to steal local data.
+    Storing you JWT in a cookie may seem like a solution to this, but could expose your data to a Cross-Site Resource Forgery attack. Additionally, if a user has disabled cookies in their browser, the application is now unable to store the JWT.
+
+Why Use JWTs?
+JWTs are used for:
+
+Authorization: They’re often used for SSO.
+Information Exchange: If a server received a valid JWT, it knows the sender is who they say they are and the information hasn’t been tampered with.
+So, why use JWTs?
+
+Parsing JSON is easier than some alternatives like XML or SAML.
+JWTs are small, scale well, and are easier for mobile devices to process.
+Why are some reasons we might not want to a JWT?
+
+A mix of a public and private key-pair adds security, but can also add complexity.
+Sensitive information, like passwords or Social Security Numbers, should not be stored client-side, even if it is encoded.
+
+Additional Resources
+    JWT Documentation
+        jwt.io
+    Node.js JWT Libraries
+        jsonwebtoken GitHub repo
+        node-jws GitHub repo
+        jose GitHub repo

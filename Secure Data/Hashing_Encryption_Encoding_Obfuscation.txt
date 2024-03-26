@@ -1,0 +1,35 @@
+Encryption- Cryptography is the science of hiding data and making it available again. In cryptography, hiding data is called encryption and unhiding it is called decryption. When data is securely exchanged, 
+    it is first encrypted by the sender, and then decrypted by the receiver using a special key.
+    Symmetric Encryption: uses the same key to both encrypt and decrypt data.
+        fastest way to encrypt data, and the most common for sending large chunks of data, however, it has one major vulnerability: if you send someone your key, then it;s in a form that any other person can read.
+    Asymmetric Encryption: uses two different keys to  encrypt and decrypt data.
+        differs from symmetric encryption in one way: Instead of one key, you have a key pair. A key pair is made up of a public key and a private key.
+            The public key can be given to anyone and is only used to encrypt data.
+            The private key is kept secret and is only used to decrypt data.
+        Asymmetric encryption is the most secure way to transmit data; however, it is slower and more complex than symmetric encryption. Therefore, it is primarily used to exchange smaller pieces of data.
+
+How does symmetric encryption differ from asymmetric encryption? Symmetric encryption encrypts and decrypts with the same key; assymetric encryption uses a pub;ic/private pair.
+
+Hashing- Hashing does not encrypt data. Instead, hashing is a one-way process that takes a piece of data of any size and uses a mathematical function to represent that data with a unique hash value of a fixed size. 
+    You cannot compute the original data from its hash.
+    Because each hash should be unique, hashing allows us to see if changes have been made to documents.
+    Ideally, hash functions always generate unique values for different inputs. When they don’t it’s called a hash collision. While it’s hypothetically possible to encounter a hash collision with nearly any hashing algorithm, 
+    with modern algorithms like SHA-256, it would take so long to result in a collision that it’s functionally impossible. Earlier hashing algorithms, like MD5 and SHA-1, are more likely to result in hash collisions.
+
+What is it called when two different inputs generate the exact same hash? Hash collision
+
+Encoding- not actually able to hide data. Transforms data into a form that can be used by a ddifferrent type of system. Encoded information is easily reversed and only requires knowledge of the algorithm used to decode information.
+    different types: ASCII(American Standard Code for Information Exchange), Unicode, Base64
+
+Obfuscation- less about data security and more about securing code. Means to hide the meaning of something by making it difficult to understand. Makes it difficult for others to steal code and use it for their own purpose. 
+    Makes it harder for users to hack software or get around licensing requirements needed to use programs.
+    *Malicious actors might also use it to make it hard for users or antivirus software to detect a virus they are planting on a system.
+
+According to CISA,
+    Authentication and authorization go hand in hand. Users must be authenticated before carrying out the activity they are authorized to perform. 
+    Security is strong when the means of authentication cannot later be refuted—the user cannot later deny that [they] performed the activity. This is known as non-repudiation.
+
+Securing data is an important part of upholding the principles of authentication, authorization, and non-repudiation.
+Whether it’s financial data, health data, personal user data, or any other type of data, chances are it will need to be secured in some way. Sometimes data can be secured by simply limiting who accesses it, 
+but some data is so sensitive, it must be secured using additional measures.
+Implementing authentication and authorization is just part of securing a system. Proper encryption and hashing practices are also imperative to an application’s security.

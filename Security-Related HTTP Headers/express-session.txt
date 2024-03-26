@@ -1,0 +1,108 @@
+npm install express-session
+const session = require("express-session")
+
+secret: The secret property is a key used for signing and/or encrypting cookies in order to protect our session ID.
+resave: Setting this option to true will force a session to be saved back to the session data store, even when no data was modified. Typically, this option should be false, but also depends on your session storage strategy.
+saveUninitialized: This property is a boolean value. If it’s set to true, the server will store every new session, even if there are no changes to the session object. 
+    This might be useful if we want to keep track of recurring visits from the same browser, but overall, setting this property to false allows us to save memory space.
+example: 
+    app.use(
+    session({
+        secret: "D53gxl41G",
+        resave: false,
+        saveUninitialized: false,
+    })
+    );
+Sessions are typically stored in 3 different ways:
+    In memory(this is the default storage).
+    In a databse like MongoDB or MySQL.
+    A memory cache like Redis or Memcached
+MemoryStore() = express-session in-memory store. This is the default storage. Note: Storing in-memory sessions is something that should be done only during development, NOT during production due to security risks.
+example: const store = new session.MemoryStore();
+    app.use(
+        session({
+            secret: "secret-key",
+            resave: false,
+            saveUninitialized: false,
+            store,
+        })
+    );
+Add cookie property: 
+    app.use(
+    session({
+        secret: "f4z4gs$Gcg",
+        cookie: { maxAge: 1000 * 60 *60 * 24, secure: true, sameSite: "none" },
+        saveUninitialized: false,
+        resave: false,
+    })
+    );
+Other cookie properties include: cookie.expires, cookie.httpOnly, cookie.sameSite
+
+Sessions and Authentication: Logging In
+// Look up user in database, if found, confirm password:
+    if (password == "codec@demy10") {
+    // Attach an `authenticated` property to our session:
+    req.session.authenticated = true;
+    // Attach a user object to our session:
+    req.session.user= {
+        username,
+        password,
+    }
+    }
+Let’s say we had saved the number of items in a user’s cart in the session data:
+    req.session.user.cartCount = 2;
+    We can access by referring to req.session.user.cartCount
+res.render() takes in a view page as the first argument and an object whose properties define local variables for the view as the second argument.
+In the protected rpite. we cam also pass the user session object.
+    app.get("/protected", authorizedUser, (req, res, next) => {
+    res.render("protected", { "user": req.session.user });
+    });
+example: // Add your ensureAuthentication middleware below:
+    app.get("/shop", ensureAuthentication, (req, res) => {
+    // Send the user object to the view page:
+    res.render("shop", { user: req.session.user });
+    });
+
+Review:
+How to use express-sessions in order to create our own middleware for sessions.
+
+How certain properties work in the session middleware, such as resave, and saveUninitialized.
+
+How to configure cookies in the middleware, along with specific properties that help with session security.
+
+How to store a session in memory
+
+How to incorporate sessions into an authentication process.
+
+How to access and modify session after user is authenticated
+
+What does express-session allow you to do? It provides software that make it easier to implement sessions for each user accessing you application. You can refer to the middleware in the rest of your code.
+What of the following is an advantage of using session cookies over localStorage? Cookies are compatible with HTML4 and HTML5 while localStorage is only available with HTML5.
+Which of the following accurately describes the relationship between sessions and cookies?Cookies store session identifiers in the browser so that user requests can retrieve session data.
+Where would you find information that looks like this? Http response header.
+In JavaScript using express-session, the user object in the session data is defined like so. Complete the code block to access how many likes the user has given during the session.
+    req.session.user = {username, password, activity: {likes: 4 }};
+    var likes = req.session.user.activity.likes;
+Which of the following is NOT something that can make a session more secure? Making sure the user can see and share their own session ID
+In express-session, the session middleware configuration looks something like this:
+    app.use(
+        session({
+        secret: "w5BDe53gxl41GaSeb",
+        cookie: { maxAge: 86400000, secure: true },
+        resave: false,
+        saveUninitialized: false,
+        store
+        })
+    );
+    What is the secret property used for? To encrypt the session identifier when communicating between the client and server.
+Below is a configuration for the express-session middleware. Fill in the blanks so that session cookies expire after 24 hours (86400000 milliseconds) 
+    app.use(
+        session({
+        secret: "qEas5ns3gxl41G",
+        cookie: { maxAge: 86400000, secure: true },
+        resave: false,
+        saveUninitialized: false,
+        store
+        })
+    );
+Which of the following is an advantage of localStorage and sessionStorage over cookies? localStorage has larger capacity per domain than cookies do.
