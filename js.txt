@@ -1,0 +1,95 @@
+Server- a computer or program that provides services to other computers and programs, called clients, over a network.
+Client - a machine or program that depends on a server for some resource or service.
+Roles- Sharing data between one or more client machines. sharing resources, suce as services or programs, between client machines. Distribute work to severa; connected machinnes.
+URL has for main components:
+    A connection scheme, usually HTTPS (“Hypertext Transfer Protocol Secure”), browsers and web servers use to talk with one another.
+    A subdomain that specifies the particular server (usually organized by resource type) to be delivered to the client.
+    A domain name that specifies the name of the organization(s) associated with the URL.
+    A top-level domain that specifies the type of organization associated with the URL.
+    (For the URL https://www.codecademy.com, “https” is the scheme, “www” is the subdomain, “codecademy” is the domain name, and “com” is the top-level domain.)
+There are different types of servers based on their uses. Some of the most common types of servers are as follows:
+    A file server is used to store data files for multiple users. They provide users access to stored files and data and can allow faster retrieval and saving of data. These are used on private networks and provide a location for storage of computer files. It provides a central location to store files where multiple users can work with the same documents.
+    A database server allows another computer to access the database and retrieve or upload data. This type of server typically has a large storage capacity.
+    A web server delivers web pages requested by multiple client web browsers.
+    Mail servers store and deliver email for clients through an email service platform. They are a form of digital ‘post office’ that sorts and stores emails.
+    An application server provides a software environment with all the needed requirements. This server allows users to access the application without needing to download additional software.
+    The proxy server communicates with the websites you are visiting on your behalf. It links the user with the rest of the internet. The browser connects to the proxy server, and the proxy server sends your request to the website and sends the website’s response back to you.
+Modularity is a software design technique where one program has distinct parts, each providing a single piece of the overall functionality.
+Console Module: .log() .assert() .table()
+    .log() — to print messages to the terminal.
+    .assert() — to print a message to the terminal if the value is falsy.
+    .table() — to print out a table in the terminal from an object or array.
+    Since console is a global module, its methods can be accessed from anywhere, and the require() function is not necessary.
+Process Object: process.env process.memoryUsage() .process.memoryUsage().heapUsed consol
+const os = require('os'):
+    os.type() — to return the computer’s operating system.
+    os.arch() — to return the operating system CPU architecture.
+    os.networkInterfaces() — to return information about the network interfaces of the computer, such as IP and MAC address.
+    os.homedir() — to return the current user’s home directory.
+    os.hostname() — to return the hostname of the operating system.
+    os.uptime() — to return the system uptime, in seconds.
+node -v : check current version
+REPL- read-eval-print loop
+node fileofchoosing.js : will print desired file
+process.memoryUsage() returns an object.
+
+
+Review
+Awesome work! You’ve learned a lot about some fundamental Node.js concepts and modules. Let’s take a moment to review what we learned:
+
+Node.js is a JavaScript runtime, an environment that allows us to execute our JavaScript code by converting it into something a computer can understand.
+REPLs are processes that read, evaluate, print, and repeat (loop), and Node.js comes with its own REPL we can access in our terminal with the node command.
+We run JavaScript programs with Node in the terminal by typing node followed by the file name (if we’re in the same directory) or the absolute path of the file.
+Code can be organized into separate files, modules, and combined through requiring them where needed using the require() function.
+Core modules are built into the Node.js environment to efficiently perform common tasks.
+The console module exports a global console object allowing the terminal to act as a debugging console, similar to the JavaScript console object provided by web browsers. 
+    false: it outputs messages to the browser console.
+The process module is a global module that gives access to information about the Node.js runtime environment.
+The os module provides methods to retrieve information about the computer, operating system, and network interfaces.
+The util module contains methods used to maintain and debug your code.
+
+// Require in the 'events' core module
+let events = require('events');
+
+// Create an instance of the EventEmitter class
+let myEmitter = new events.EventEmitter();
+let newUserListener = (data) => {
+  console.log(`We have a new user: ${data}.`);
+};
+
+// Assign the newUserListener function as the listener callback for 'new user' events
+myEmitter.on('new user', newUserListener)
+
+// Emit a 'new user' event
+myEmitter.emit('new user', 'Lily Pad') //newUserListener will be invoked with 'Lily Pad'
+
+process.stndout.write(" ", callbackListener)
+process.stndin.on(" ", "passed to?" )
+
+// Allocate buffer of size 15 filled with 'b'
+const bufferAlloc = Buffer.alloc(15, 'b');
+
+// Create buffer1 with 'hello' and buffer2 with 'world'
+const buffer1 = Buffer.from('hello');
+const buffer2 = Buffer.from('world');
+
+  
+// Combine buffer1 and buffer2
+const bufferArray = [buffer1, buffer2];
+const bufferConcat = Buffer.concat(bufferArray);
+
+
+// Translate buffer to string
+const bufferString = bufferConcat.toString();
+
+const fs = require('fs');
+
+let readDataCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong: ${err}`);
+  } else {
+    console.log(`Provided file contained: ${data}`);
+  }
+};
+
+fs.readFile('./file.txt', 'utf-8', readDataCallback);

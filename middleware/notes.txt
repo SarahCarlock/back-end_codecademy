@@ -1,0 +1,40 @@
+const { createId } = require("../../quote-api-starting/utils")
+
+DRY = Don't repeat yourself
+Middleware is code that executes between a server receiving a request and sending a response. It operates on the boundary, so to speak, between those two HTTP actions. In express, it is a function.
+An Express application is essentially a series of middleware function calls.
+Middleware Stack = processed in the order they appear in the application file, such that middleware defined later happens after middleware defined before.
+app.use([path,] callback [, callback...]) = In documentation for many programming languages, optional arguments for functions are placed in square brackets ([]).
+
+
+var bodyParser = require('body-parser')
+The bodyParser object exposes various factories to create middlewares. All middlewares will populate the req.body property with the parsed body when the Content-Type request header matches the type option, or an empty object ({}) if there was no body to parse, the Content-Type was not matched, or an error occurred.
+
+app.use((req, res, next) => {
+  const newValue = possiblyProblematicOperation();
+  if (newValue === undefined) {
+    let undefinedError = new Error('newValue was not defined!');
+    return next(undefinedError);
+  }
+  next();
+});
+
+Error Handling Middleware
+    app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    res.status(status).send(err.message);
+    });
+From this to this
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bean with that name already exists!');
+  }
+    const error = new Error('Bean with that name already exists!')
+    error.status = 400;
+    return next(error);
+
+We’ve accomplished a lot! We learned what middleware is and we’ve used it to write cleaner, readable, adaptable, and maintainable code. 
+        We’ve written functions that are context aware and can have overlapping functionality without duplicating code. 
+        We can serve data by route, with each possible endpoint being treated as a separate relative of the family of our application. 
+        We learned to link these middleware using next() to continue to the next middleware in the stack. 
+        We’ve reduced complexity in our codebase by relying on external, open-source middleware. 
+        We are truly harnessing the power of the Express web server, the Node environment, and our knowledge of Javascript.

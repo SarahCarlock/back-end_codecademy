@@ -1,0 +1,252 @@
+const express = require('express');
+const app = express();
+
+// Finish this function and use it in the routes below
+
+const sendFruitResponse = (req, res, next) => {
+  res.send('fruit');
+};
+
+app.get('/whatis/apple', sendFruitResponse, (req, res, next) => {
+    //res.send('fruit');
+});
+
+app.get('/whatis/orange', sendFruitResponse, (req, res, next) => {
+    //res.send('fruit');
+});
+
+app.get('/whatis/banana', sendFruitResponse, (req, res, next) => {
+    //res.send('fruit');
+});
+
+const express = require('express');
+const app = express();
+
+const moods = ['happy', 'exuberant', 'fanatical about middleware'];
+
+const moodleware = (req, res, next) => {
+  const randomMoodIndex = Math.floor(Math.random() * moods.length);
+  req.mood = moods[randomMoodIndex];
+  next(); //added this
+}
+
+app.use(moodleware);
+
+app.get('/randomMood', (req, res, next) => {
+  res.send(req.mood);
+});
+
+// Add your code here: created 39-44
+const timeMiddleware = (req, res, next) => {
+    req.date = Date.now();
+    next();
+  };
+  app.use(timeMiddleware);
+  
+  
+  app.get('/snacks', (req, res, next) => {
+      //const currentTime = Date.now();
+    res.send(`Snacks as of ${req.date}: ${database.snacks}`);
+  });
+  
+  app.get('/sides', (req, res, next) => {
+      //const currentTime = Date.now();
+    res.send(`Sides as of ${req.date}: ${database.sides}`);
+  });
+  
+  app.get('/appetizers', (req, res, next) => {
+      //const currentTime = Date.now();
+    res.send(`Appetizers as of ${req.date}: ${database.appetizers}`);
+  });
+ 
+  //Add errorhandler
+  const express = require('express');
+  const app = express();
+  const errorhandler = require('errorhandler');
+  const foods = ['pasta carbonara', 'bánh mì', 'cucumber salad'];
+  
+  app.get('/foods/:index', (req, res, next) => {
+    if (foods[req.params.index]) {
+      res.send(req.params.index);
+    } else {
+      const err = Error('Invalid index!');
+      err.status = 404;
+      next(err);
+    }
+  });
+  
+  const errorHandler = (err, req, res, next) => {
+    if (!err.status) {
+      err.status = 500;
+    }
+    res.status(err.status).send(err.message);
+  };
+  
+  app.use(errorHandler);
+
+  //Add morgan
+  const express = require('express');
+  const app = express();
+  // Add your code below:
+  const morgan = require('morgan');
+  app.use(morgan('short'));
+  // Add your code above
+  
+  app.get('/say-hi', (req, res, next) => {
+    res.send('Hi!');
+  });
+  
+  app.get('/say-bye', (req, res, next) => {
+    res.send('Bye!');
+  });
+
+//app.use middleware function
+const express = require('express');
+const app = express();
+
+const data = [1, 2, 3, 4, 5];
+
+const indexExists = (req, res, next) => {
+  const index = req.params.index;
+  if (data[index]) {
+    next();
+  } else {
+    res.status(404).send();
+  }
+};
+
+// Add your code below:
+
+app.use('/data/:index', indexExists);
+
+// Add your code above
+
+app.get('/data/:index', indexExists, (req, res, next) => {
+  res.send(data[req.params.index]);
+});
+
+app.put('/data/:index', indexExists, (req, res, next) => {
+  data[req.params.index] = req.body.number;
+  res.send(data[req.params.index]);
+});
+
+app.delete('/data/:index', indexExists, (req, res, next) => {
+  data.splice(req.params.index, 1);
+  res.status(204).send();
+});
+
+app.get('/', (req, res, next) => {
+  res.send(data);
+});
+
+//import cors request
+const express = require('express');
+const app = express();
+const cors = require('cors');
+
+app.use(cors());
+
+//use isAdmin
+const express = require('express');
+const app = express();
+
+const secretData = {
+  adminUsers: ['1', '2', '51'],
+  coolPhoneNumbers: ['555-555-CODE', '555-EXP-RESS', 'MID-DLE-WARE'],
+  favSites: ['codecademy.com', 'expressjs.com']
+}
+
+const publicData = {
+  colors: ['green', 'orange'],
+  numbers: [1, 2, 3, 4, 5]
+}
+
+const isAdmin = (req, res, next) => {
+  const id = req.params.userId;
+  if (!secretData.adminUsers.includes(id)) {
+    res.status(401).send(); // Unauthorized
+  } else {
+    next();
+  }
+}
+
+app.get('/:userId/colors', (req, res, next) => {
+  res.send(publicData.colors);
+});
+
+app.get('/:userId/numbers', (req, res, next) => {
+  res.send(publicData.numbers);
+});
+
+app.get('/:userId/phone-numbers', isAdmin, (req, res, next) => {
+  res.send(secretData.coolPhoneNumbers);
+});
+
+app.get('/:userId/fav-sites', isAdmin, (req, res, next) => {
+  res.send(secretData.favSites);
+});
+
+const express = require('express');
+const appleRouter = express.Router();
+
+const apples = {
+  mcintosh: {
+    description: 'Classic, juicy, bright',
+    priceRange: 'medium',
+    color: 'green and red'
+  },
+  honeycrisp: {
+    description: 'Crisp, sweet!',
+    priceRange: 'pricey',
+    color: 'red and yellow'
+  },
+  goldenDelicious: {
+    description: 'rich, custardy',
+    priceRange: 'cheap',
+    color: 'yellow'
+  }
+}
+
+// Finish the appleRouter.param call:
+
+appleRouter.param('variety', (req, res, next, variety) => {
+  if (!apples[variety]) {
+    res.status(404).send();
+    
+  } else {
+    req.variety = apples[variety];
+    next();
+  }
+});
+
+// Refactor the routes below to utilize your middleware:
+
+appleRouter.get('/:variety/description', (req, res, next) => {
+  /*const variety = req.params.variety;
+  if (apples[variety]) {
+    res.send(apples[variety].description);
+  } else {
+    res.status(404).send();
+  }*/
+  res.send(req.variety.description);
+});
+
+appleRouter.get('/:variety/price-range', (req, res, next) => {
+  /*const variety = req.params.variety;
+  if (apples[variety]) {
+    res.send(apples[variety].priceRange);
+  } else {
+    res.status(404).send();
+  } */
+  res.send(req.variety.priceRange);
+});
+
+appleRouter.get('/:variety/color', (req, res, next) => {
+  /*const variety = req.params.variety;
+  if (apples[variety]) {
+    res.send(apples[variety].color);
+  } else {
+    res.status(404).send();
+  }*/
+  res.send(req.variety.color);
+});

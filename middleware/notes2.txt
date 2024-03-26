@@ -1,0 +1,19 @@
+What is the name of the function, passed as an argument to a middleware function, that passes control to the next middleware in the stack? next()
+Which of these methods runs middleware for any HTTP verb at an address? app.use()
+What is the function signature of error-handling middleware? (err, req, res, next)
+What does the coding principle “DRY” stand for? Don't Repeat yourself
+Which would allow us to use the logging library morgan? app.use(morgan('tiny'))
+Which middleware from the Express middleware list would you use to create virtual domains? vhost
+What will be printed to the console when performing a GET request to the route /shirts? 
+    app.use((req, res, next) => {
+    console.log('Got a request!');
+    });
+
+    app.get('/shirts', (req, res, next) => {
+    console.log('Requesting shirts!');
+    });  
+    'Got a request!'
+
+Which of the following is true of app.use() It defaults to all paths but takes an optiona; first argument which can be a single path or an array of multiple paths.
+What function allows us to handle URL parameters in a DRY way? router.param()
+What would the following code log to the console during an HTTP GET request to ‘/user’? Hello! You are visiting 'user' Well, goodbye!

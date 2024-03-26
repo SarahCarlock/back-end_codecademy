@@ -1,0 +1,16 @@
+cURL CLI arguments
+Here are a few cURL argument we'll pass with our requests. All requests will simply be curl followed by the argument and data to pass.
+
+curl
+-X --request - Custom request method
+-d --data - Sends the specified data
+-H --header - Sends headers
+-i --include - Display response headers
+
+GET retrieves data.
+POST creates a new resource. It is non-idempotent, meaning that two identical POST requests will create two new resources.
+PUT updates an existing resource. It is idempotent, meaning that two identical PUT requests will modify the same resource. A PUT request requires the entire body to be sent through; if any data is missing, that data will be wiped (except automatic values like auto-incrementing IDs and timestamps).
+PATCH updates an existing resource, and does not require sending the entire body with the request.
+DELETE removes a resource.
+Postman guide: https://www.taniarascia.com/making-api-requests-postman-curl/
+

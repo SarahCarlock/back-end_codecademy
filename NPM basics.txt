@@ -1,0 +1,9 @@
+npm init : initializing the project
+    adding -y after init will skip command prompts
+
+npm i nodemon : Nodemon package: used to automatically restart a program when a file changes.
+npm install nodemon --save-dev : as a development dependency
+npm install http-server -g : http-server is a good package to install globally since it is a general command-line utility and its purpose is not linked to any specific functionality within an app.
+npm i : when working with others, share file and install package
+npm i --production : leaves out dev dependencies
+ 
